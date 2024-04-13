@@ -5,9 +5,9 @@ Frontend Tools
    
 
 Backend Tools
-    -> Node JS
-    -> Jest for Node
-    -> If any AI Comes in, Python????? 
+-> Node JS
+-> Jest for Node
+-> If any AI Comes in, Python????? 
 
 Database
     -> Postgresql
