@@ -1,0 +1,32 @@
+Frontend Tools
+    -> Figma wireframes and UI
+    -> React
+    -> Bootstrap / Custom CSS
+   
+
+Backend Tools
+    -> Node JS
+    -> Jest for Node
+    -> If any AI Comes in, Python????? 
+
+Database
+    -> Postgresql
+    -> MongoDB
+
+Others
+    -> Queue Management 
+        -> Redis or Rabbit MQ
+    -> Push Notifications 
+        -> Socket, if it is on js Socket.IO 
+
+DevOps
+    -> Source Management
+        -> Git
+    -> Repo
+        -> Git Hub
+    -> Pipeline
+        -> Something on AWS or jenkins pipeline Or Git Actions
+        -> Docker with ECR
+        -> Hosting -> EC2
+        -> Storage -> S3
+
