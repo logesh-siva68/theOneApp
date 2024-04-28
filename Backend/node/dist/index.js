@@ -1,4 +1,5 @@
 import { App } from "./app.js";
+import goalsRouter from "./routes/goals.routes.js";
 import loginRouter from "./routes/login.routes.js";
 const publicRoutes = [
     {
@@ -6,6 +7,12 @@ const publicRoutes = [
         handler: loginRouter
     }
 ];
-const app = new App(publicRoutes, []);
+const securedRoutes = [
+    {
+        path: "/goal",
+        handler: goalsRouter
+    }
+];
+const app = new App(publicRoutes, securedRoutes);
 app.createAndRunServer();
 //# sourceMappingURL=index.js.map

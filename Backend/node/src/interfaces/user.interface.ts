@@ -5,4 +5,5 @@ export interface registerBody{
     mobileNumber:number,
     countryCode:string,
     dob?: Date,
+    password:string
 }

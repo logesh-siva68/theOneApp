@@ -2,11 +2,13 @@ import express, { Request, Response, Application } from "express";
 import {Route} from "./interfaces/common.interface.js";
 import http from "http";
 import mongoose from 'mongoose';
+import 'dotenv/config';
+import authUser from "./utils/authUser.js";
 
 
 export class App{
     app:Application;
-    port:Number = 3000;
+    port:Number = Number(process.env.PORT) || 3000;
     constructor(publicRoutes:Route[],securedRoutes:Route[]){
         this.app = express();
         this.app.use(express.json());
@@ -15,14 +17,20 @@ export class App{
 
     async initApp(publicRoutes, securedRoutes){
         try{
-            let connection = mongoose.connect('mongodb://localhost:27017/goal');
-            connection.then(data=>{console.log('Connected to Mongo!');})
-            // console.log('Connected to Mongo!', connection);
+            await mongoose.connect(process.env.MONGO_CONNECTION_URL);
+            console.log('Connected to Mongo!');
             publicRoutes.forEach(element => {
+                console.log(element)
                 this.app.use(element.path, element.handler);
             });
-        }catch(err){
+            this.app.use(authUser);
+            securedRoutes.forEach(element => {
+                console.log(element)
+                this.app.use(element.path, element.handler);
+            });
 
+        }catch(err){
+           throw err;
         }
        
     }

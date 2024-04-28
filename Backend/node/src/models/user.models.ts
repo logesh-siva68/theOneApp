@@ -3,7 +3,8 @@ let UserSchema = new mongoose.Schema({
     name: String,
     mobileNumber:{unique: true, type:Number}, 
     countryCode:String,
-    dob:Date 
+    dob:Date,
+    password:String
 });
 
 UserSchema.index({ mobileNumber: 1 })
