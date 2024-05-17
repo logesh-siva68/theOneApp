@@ -27,6 +27,10 @@ function registerValidation(req: Request, res: Response, next: NextFunction) {
             .message(
                 'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
             ),
+        email: Joi.string().email().required().messages({
+            'any.required': 'email is required. Please provide a name.',
+            'string.empty': 'email must not be empty. Please provide a name.',
+        }),
     });
     let body: registerBody = req.body;
     // console.log(schema.validate(body).error)

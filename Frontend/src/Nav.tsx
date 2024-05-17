@@ -1,10 +1,8 @@
 // import { Link } from "react-router-dom";
 
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export function Nav() {
-    const [isLogin, setIsLoging] = useState(false);
+export function Nav({ loginStatus }) {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container">
@@ -12,7 +10,7 @@ export function Nav() {
                     Goals
                 </Link>
                 <ul className="navbar-nav d-flex">
-                    {!isLogin && (
+                    {!loginStatus && (
                         <>
                             <li className="nav-item">
                                 <Link to="/login" className="nav-link">
@@ -26,15 +24,12 @@ export function Nav() {
                             </li>
                         </>
                     )}
-                    {isLogin && (
+                    {loginStatus && (
                         <>
                             <li>
-                                <a
-                                    className="nav-link active"
-                                    href="javascript:void(0)"
-                                >
-                                    Dashboard
-                                </a>
+                                <Link to="/goals" className="nav-link">
+                                    Goal
+                                </Link>
                             </li>
                         </>
                     )}

@@ -2,6 +2,10 @@ import { App } from './app.js';
 import { Route } from './interfaces/common.interface.js';
 import goalsRouter from './routes/goals.routes.js';
 import loginRouter from './routes/login.routes.js';
+import dot from 'dotenv';
+
+dot.config();
+
 const publicRoutes: Route[] = [
     {
         path: '/user',

@@ -2,13 +2,14 @@ import express, { Request, Response, Application } from 'express';
 import { Route } from './interfaces/common.interface.js';
 import http from 'http';
 import mongoose from 'mongoose';
-
+import cors from 'cors';
 export class App {
     app: Application;
-    port: Number = 3000;
+    port: Number = Number(process.env.PORT) || 3001;
     constructor(publicRoutes: Route[], securedRoutes: Route[]) {
         this.app = express();
         this.app.use(express.json());
+        this.app.use(cors());
         this.initApp(publicRoutes, securedRoutes);
     }
 
