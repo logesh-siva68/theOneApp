@@ -31,6 +31,11 @@ export function Nav({ loginStatus }) {
                                     Goal
                                 </Link>
                             </li>
+                            <li>
+                                <Link to="/logout" className="nav-link">
+                                    Logout
+                                </Link>
+                            </li>
                         </>
                     )}
                 </ul>

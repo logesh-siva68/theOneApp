@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 type userType = {
-    name: String;
-    email: String;
-    mobileNumber: Number;
-    countryCode: String;
-    password: String;
+    name: string;
+    email: string;
+    mobileNumber: number;
+    countryCode: string;
+    password: string;
 };
 
-export function SingUp() {
+export function SingUp({ setIsLoginPass }) {
     const [user, setUser] = useState<userType>({
         name: "",
         email: "",
@@ -28,11 +28,15 @@ export function SingUp() {
     }
     async function handelClick() {
         try {
-            let data = await axios.post("http://localhost:3000/user/register", {
-                ...user,
-            });
+            const data = await axios.post(
+                "http://localhost:3000/user/register",
+                {
+                    ...user,
+                }
+            );
 
             console.log(data);
+            setIsLoginPass(true);
             navigate("/goals");
         } catch (err) {
             console.log(err);

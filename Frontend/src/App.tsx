@@ -4,18 +4,34 @@ import { SingIn } from "./SignIn";
 import { SingUp } from "./SignUp";
 import { Nav } from "./Nav";
 import { ShowGoals } from "./Goals";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Logout } from "./Logout";
 
 function App() {
     const [isLogin, setIsLogin] = useState(false);
+
+    function handelSetLogin(val: boolean) {
+        setIsLogin(val);
+    }
+    useEffect(() => {}, [isLogin]);
     return (
         <BrowserRouter>
             <>
                 <Nav loginStatus={isLogin} />
                 <Routes>
-                    <Route path="/" Component={SingUp} />
-                    <Route path="/login" Component={SingIn} />
-                    <Route path="/goals" Component={ShowGoals} />
+                    <Route
+                        path="/"
+                        element={<SingUp setIsLoginPass={handelSetLogin} />}
+                    />
+                    <Route path="/login" element={<SingIn />} />
+                    <Route
+                        path="/goals"
+                        element={<ShowGoals isLogin={isLogin} />}
+                    />
+                    <Route
+                        path="/logout"
+                        element={<Logout setIsLoginPass={handelSetLogin} />}
+                    />
                 </Routes>
             </>
         </BrowserRouter>
