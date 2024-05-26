@@ -44,3 +44,35 @@ h6 {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
 }
+a {
+    text-decoration: none;
+    color: #000;
+}
+.main-nav {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.main-nav .brand {
+    font-size: 16px;
+    color: #000;
+}
+
+.main-nav .nav-container {
+    margin-left: auto;
+}
+
+.main-nav .nav-container a {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.main-nav .nav-container a.active {
+    color: #000;
+}
+
+.main-nav .container {
+    display: flex;
+}

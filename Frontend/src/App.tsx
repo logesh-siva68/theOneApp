@@ -1,40 +1,22 @@
 // import { useState } from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { SingIn } from "./SignIn";
-import { SingUp } from "./SignUp";
-import { Nav } from "./Nav";
-import { ShowGoals } from "./Goals";
-import { useEffect, useState } from "react";
-import { Logout } from "./Logout";
+import { Route, Routes } from "react-router-dom";
+import Dashboard from "./components/pages/Dashboard";
+import Login from "./components/pages/Login";
+import Register from "./components/pages/Register";
+import Header from "./components/Header";
+import NotFound from "./components/NotFound";
 
 function App() {
-    const [isLogin, setIsLogin] = useState(false);
-
-    function handelSetLogin(val: boolean) {
-        setIsLogin(val);
-    }
-    useEffect(() => {}, [isLogin]);
     return (
-        <BrowserRouter>
-            <>
-                <Nav loginStatus={isLogin} />
-                <Routes>
-                    <Route
-                        path="/"
-                        element={<SingUp setIsLoginPass={handelSetLogin} />}
-                    />
-                    <Route path="/login" element={<SingIn />} />
-                    <Route
-                        path="/goals"
-                        element={<ShowGoals isLogin={isLogin} />}
-                    />
-                    <Route
-                        path="/logout"
-                        element={<Logout setIsLoginPass={handelSetLogin} />}
-                    />
-                </Routes>
-            </>
-        </BrowserRouter>
+        <>
+            <Header />
+            <Routes>
+                <Route path="" element={<Dashboard />} />
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </>
     );
 }
 
