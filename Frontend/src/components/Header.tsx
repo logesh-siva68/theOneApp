@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 
-function Header() {
+function Header({ isAuth }: { isAuth: boolean }) {
     return (
         <nav className="main-nav">
             <div className="container">
@@ -8,17 +8,27 @@ function Header() {
                     One App
                 </Link>
                 <div className="nav-container">
-                    <NavLink className="" to="/">
-                        Dashboard
-                    </NavLink>
+                    {isAuth && (
+                        <>
+                            <NavLink className="" to="/">
+                                Dashboard
+                            </NavLink>
 
-                    <NavLink className="" to="login">
-                        Login
-                    </NavLink>
-
-                    <NavLink className="" to="register">
-                        Register
-                    </NavLink>
+                            <NavLink className="" to="logout">
+                                Logout
+                            </NavLink>
+                        </>
+                    )}
+                    {!isAuth && (
+                        <>
+                            <NavLink className="" to="login">
+                                Login
+                            </NavLink>
+                            <NavLink className="" to="register">
+                                Register
+                            </NavLink>
+                        </>
+                    )}
                 </div>
             </div>
         </nav>
